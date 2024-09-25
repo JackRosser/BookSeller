@@ -1,6 +1,8 @@
 let bookLink = "https://striveschool-api.herokuapp.com/books";
 let main = document.querySelector("main");
 let cartPrice = document.getElementById("cart-price");
+let myCart = [];
+console.log(myCart);
 
 let totalPrice = parseFloat(localStorage.getItem("prezzo")) || 0;
 cartPrice.innerText = totalPrice.toFixed(2);
@@ -37,12 +39,13 @@ const loadBooks = function () {
           let priceElement = cardContainer.querySelector(".price");
           let priceText = priceElement.innerText;
           let priceValue = parseFloat(priceText.replace(" $", ""));
-
           totalPrice += priceValue;
-
+          myCart.push(obj[i]);
+          localStorage.setItem(`libro`, JSON.stringify(obj[i]));
           localStorage.setItem("prezzo", totalPrice);
 
           cartPrice.innerText = totalPrice.toFixed(2);
+          console.log(myCart);
         });
       }
     })

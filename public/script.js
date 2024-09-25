@@ -1,7 +1,9 @@
 let bookLink = "https://striveschool-api.herokuapp.com/books";
 let main = document.querySelector("main");
 let cartPrice = document.getElementById("cart-price");
-cartPrice.innerText = localStorage.getItem("prezzo");
+
+let totalPrice = parseFloat(localStorage.getItem("prezzo")) || 0;
+cartPrice.innerText = totalPrice.toFixed(2);
 
 const loadBooks = function () {
   fetch(bookLink)
@@ -33,9 +35,14 @@ const loadBooks = function () {
 
         cardContainer.querySelector("button").addEventListener("click", function () {
           let priceElement = cardContainer.querySelector(".price");
-          let priceText = priceElement.textContent;
-          let priceValue = priceText.replace(" $", "");
-          localStorage.setItem("prezzo", priceValue);
+          let priceText = priceElement.innerText;
+          let priceValue = parseFloat(priceText.replace(" $", ""));
+
+          totalPrice += priceValue;
+
+          localStorage.setItem("prezzo", totalPrice);
+
+          cartPrice.innerText = totalPrice.toFixed(2);
         });
       }
     })

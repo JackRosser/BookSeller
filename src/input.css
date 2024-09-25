@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .jack-main-grid {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply md:grid-cols-3;
+    @apply lg:grid-cols-4;
+    @apply xl:grid-cols-6;
+    @apply 2xl:grid-cols-8;
+    @apply gap-2;
+    @apply px-2;
+    @apply md:w-3/4;
+    @apply lg:w-[80%];
+    @apply xl:w-3/4;
+    @apply bg-white;
+    @apply p-1 m-auto;
+  }
+}
+
+@layer base {
+  .jack-main-grid {
+    @apply py-3;
+    @apply px-2;
+  }
+}

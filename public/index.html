@@ -6,10 +6,20 @@
     <title>Tailwind CSS Installation</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
+  <body class="bg-slate-200">
     <header></header>
 
-    <main></main>
+    <main class="jack-main-grid">
+      <div class="flex flex-col items-center justify-center border shadow-md p-2 min-h-[300px]">
+        <img src="./img/book.jpg" alt="bookimg" />
+        <h2 class="text-sm font-bold mt-2">Pandemic (The Extinction Files, Book 1)</h2>
+        <div class="flex mt-2 border justify-between w-full">
+          <h3 class="text-white bg-red-600 p-1 rounded-md flex items-center justify-center">10$</h3>
+          <button class="bg-sky-400 text-white p-2 rounded-md">Buy Now</button>
+        </div>
+      </div>
+    </main>
     <footer></footer>
+    <script src="./script.js" defer></script>
   </body>
 </html>

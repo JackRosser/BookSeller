@@ -1,5 +1,7 @@
 let bookLink = "https://striveschool-api.herokuapp.com/books";
 let main = document.querySelector("main");
+let cartPrice = document.getElementById("cart-price");
+cartPrice.innerText = localStorage.getItem("prezzo");
 
 const loadBooks = function () {
   fetch(bookLink)
@@ -19,7 +21,7 @@ const loadBooks = function () {
         cardContainer.innerHTML = `<img src="${obj[i].img}" alt="booking" class="h-full w-full"/>
         <h2 class="text-sm font-bold mt-2">${obj[i].title}</h2>
         <div class="flex mt-2 justify-between w-full">
-       <h3 class="text-slate-400">${obj[i].price} $</h3>
+       <h3 class="text-slate-400 price">${obj[i].price} $</h3>
        <div class="cursor-pointer delete-button" style="color:red">X</div>
        <button class="bg-sky-400 text-white p-2 rounded-md hover:bg-orange-500 active:bg-blue-600">Buy Now</button>
         </div>`;
@@ -28,14 +30,18 @@ const loadBooks = function () {
         cardContainer.querySelector(".delete-button").addEventListener("click", function () {
           cardContainer.remove();
         });
+
+        cardContainer.querySelector("button").addEventListener("click", function () {
+          let priceElement = cardContainer.querySelector(".price");
+          let priceText = priceElement.textContent;
+          let priceValue = priceText.replace(" $", "");
+          localStorage.setItem("prezzo", priceValue);
+        });
       }
     })
-    .catch(
-      (err) =>
-        function () {
-          console.log("errore generico");
-        }
-    );
+    .catch((err) => {
+      console.log("errore generico");
+    });
 };
 
 loadBooks();

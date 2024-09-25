@@ -20,9 +20,14 @@ const loadBooks = function () {
         <h2 class="text-sm font-bold mt-2">${obj[i].title}</h2>
         <div class="flex mt-2 justify-between w-full">
        <h3 class="text-slate-400">${obj[i].price} $</h3>
+       <div class="cursor-pointer delete-button" style="color:red">X</div>
        <button class="bg-sky-400 text-white p-2 rounded-md hover:bg-orange-500 active:bg-blue-600">Buy Now</button>
         </div>`;
         main.appendChild(cardContainer);
+
+        cardContainer.querySelector(".delete-button").addEventListener("click", function () {
+          cardContainer.remove();
+        });
       }
     })
     .catch(

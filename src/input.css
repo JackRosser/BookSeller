@@ -8,8 +8,7 @@
     @apply grid-cols-2;
     @apply md:grid-cols-3;
     @apply lg:grid-cols-4;
-    @apply xl:grid-cols-6;
-    @apply 2xl:grid-cols-8;
+    @apply xl:grid-cols-5;
     @apply gap-2;
     @apply px-2;
     @apply md:w-3/4;
